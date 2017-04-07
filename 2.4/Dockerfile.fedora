@@ -25,7 +25,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="builder,httpd,httpd24"
 
 ENV NAME=httpd \
-    VERSION=$HTTPD_VERSION \
+    VERSION=0 \
     RELEASE=1 \
     ARCH=x86_64
 
@@ -33,7 +33,9 @@ LABEL com.redhat.component="$NAME" \
       name="$FGC/$NAME" \
       version="$VERSION" \
       release="$RELEASE.$DISTTAG" \
-      architecture="$ARCH"
+      architecture="$ARCH" \
+      usage="docker run -d --name httpd -p 8080:8080 -v /wwwdata:/var/www:Z 25/httpd" \
+      help="help.1"
 
 EXPOSE 80
 EXPOSE 443
